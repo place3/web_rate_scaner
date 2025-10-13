@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная | Scanner WebApp</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Добро пожаловать в систему сканирования!</h1>
+
+    <div class="buttons">
+        <a href="/upload/">📂 Загрузить сканы</a>
+        <button id="delete">🗑️ Удалить все сканы</button>
+        <a href="/process/">⚙️ Перейти к сканированию</a>
+    </div>
+
+    <script>
+        document.getElementById("delete").addEventListener("click", async () => {
+            const res = await fetch("/manage/delete_all", { method: "DELETE" });
+            const data = await res.json();
+            alert(data.status);
+        });
+    </script>
+</body>
+</html>

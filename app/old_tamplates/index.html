@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Файловый менеджер</title>
+  <!-- Подключаем Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+<!-- Хедер -->
+<header class="bg-white shadow-md p-4">
+  <h1 class="text-2xl font-semibold text-center text-gray-800">
+    Панель управления файлами
+  </h1>
+</header>
+
+<!-- Основное содержимое -->
+<main class="flex-grow flex flex-col items-center justify-center gap-6">
+  <!-- Кнопка 1 -->
+  <a href="upload.html"
+     class="px-6 py-3 bg-blue-500 text-white font-medium rounded-lg shadow hover:bg-blue-600 transition">
+    Загрузить документы
+  </a>
+
+  <!-- Кнопка 2 -->
+  <button
+    onclick="fetch('/delete', { method: 'POST' }).then(() => alert('Файлы удалены'))"
+    class="px-6 py-3 bg-red-500 text-white font-medium rounded-lg shadow hover:bg-red-600 transition">
+    Удалить файлы
+  </button>
+
+  <!-- Кнопка 3 (большая) -->
+  <a href="scan.html"
+     class="px-10 py-5 bg-green-500 text-white text-lg font-semibold rounded-xl shadow hover:bg-green-600 transition">
+    Скан
+  </a>
+</main>
+
+<!-- Футер -->
+<footer class="bg-white text-center text-gray-500 py-3 text-sm border-t">
+  &copy; 2025 Внутреннее приложение
+</footer>
+
+</body>
+</html>

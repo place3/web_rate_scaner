@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Сканирование</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+<header class="bg-white shadow-md p-4 text-center text-xl font-semibold">
+  Сканирование документов
+</header>
+
+<main class="flex-grow flex flex-col items-center justify-center gap-6">
+  <div class="w-64 bg-gray-300 rounded-full h-4 overflow-hidden">
+    <div id="progress-bar" class="bg-green-500 h-4 w-0 transition-all duration-500"></div>
+  </div>
+
+  <button id="start-btn" class="px-6 py-3 bg-green-500 text-white rounded hover:bg-green-600 transition">
+    Начать сканирование
+  </button>
+
+  <button id="send-btn" class="hidden px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+    Отправить в Telegram
+  </button>
+
+  <a href="index.html" class="text-blue-500 hover:underline">← Назад</a>
+</main>
+
+<script>
+  const startBtn = document.getElementById('start-btn');
+  const sendBtn = document.getElementById('send-btn');
+  const bar = document.getElementById('progress-bar');
+
+  startBtn.addEventListener('click', async () => {
+    startBtn.disabled = true;
+    bar.style.width = '0%';
+
+    // Пример имитации прогресса
+    for (let i = 0; i <= 100; i += 10) {
+      await new Promise(r => setTimeout(r, 300));
+      bar.style.width = i + '%';
+    }
+
+    // По окончании — показать кнопку "Отправить"
+    sendBtn.classList.remove('hidden');
+    alert('Сканирование завершено');
+  });
+</script>
+</body>
+</html>
