@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Главная | Scanner WebApp</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/css/index.css">
 </head>
 <body>
     <h1>Добро пожаловать в систему сканирования!</h1>
 
     <div class="buttons">
         <a href="/upload/">📂 Загрузить сканы</a>
-        <button id="delete">🗑️ Удалить все сканы</button>
+        <button id="delete" onclick="deleteScans()">🗑️ Удалить все сканы</button>
         <a href="/process/">⚙️ Перейти к сканированию</a>
     </div>
 
     <script>
-        document.getElementById("delete").addEventListener("click", async () => {
-            const res = await fetch("/manage/delete_all", { method: "DELETE" });
-            const data = await res.json();
-            alert(data.status);
-        });
+            async function deleteScans() {
+                if (!confirm("Удалить все загруженные сканы?")) return;
+
+                const response = await fetch('/manage/delete_all', { method: 'DELETE' });
+                if (response.ok) {
+                    const result = await response.json();
+                    alert("✅ Удалено файлов: " + result.deleted.length);
+                } else {
+                    alert("❌ Ошибка при удалении");
+                }
+            }
+
     </script>
 </body>
 </html>

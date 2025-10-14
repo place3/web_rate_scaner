@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.file-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.file-name {
+  width: 300px;
+}
+
+.progress {
+  flex: 1;
+  height: 14px;
+  background: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress > i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: #4caf50;
+  transition: width 0.2s ease;
+}
+
+.status {
+  width: 240px;
+  text-align: right;
+  font-size: 13px;
+  color: #333;
+}
